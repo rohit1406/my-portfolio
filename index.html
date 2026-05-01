@@ -1,10 +1,98 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css" type='text/css'>
   </head>
 
   <body>
-    <h1>Rohit's Portfolio</h1>
+    <!-- Landmark elements in HTML provides page navigation structure to the assistive technologies -->
+    <header class="site-header">
+      <h1 class="site-title">Rohit's Portfolio</h1>
+      <p class="site-subtitle">Welcome to my portfolio!</p>
+      <nav id="main-nav" aria-label="Main navigation">
+        <h2 class="nav-header">Resources</h2>
+        <ul class="nav-list">
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main class="main-content">
+      <article>
+        <header>
+          <h1>Resume</h1>
+          <p>Published on <time datetime="2026-05-01">on: May 1, 2026</time></p>
+          <p class="objective">Objective: To secure a challenging position in a reputable organization to expand my learnings, knowledge, and skills.</p>
+        </header>
+
+        <section>
+          <h2>Technical Skills</h2>
+          <p>This is another section of the article. It provides additional information and insights on the topic.</p>
+        </section>
+
+        <section>
+          <h2>Experience</h2>
+          <p>This is another section of the article. It provides additional information and insights on the topic.</p>
+        </section>
+
+        <section>
+          <h2>Certification</h2>
+          <p>This is another section of the article. It provides additional information and insights on the topic.</p>
+        </section>
+
+        <section>
+          <h2>Qualifications</h2>
+          <p>This is another section of the article. It provides additional information and insights on the topic.</p>
+        </section>
+
+        <section>
+          <h2>Personal Details</h2>
+          <p>This is another section of the article. It provides additional information and insights on the topic.</p>
+        </section>
+      </article>
+
+      <aside>
+        <h2>Related Links</h2>
+        <nav id="external-links-nav" aria-label="Related articles">
+        <ul>
+          <li><a href="https://github.com/rohit1406?tab=repositories" 
+            target="_blank"
+            aria-describedby="external-link-warning"
+            class="external-link">Github Repository</a></li>
+          <li><a href="https://www.linkedin.com/in/rohit-muneshwar-a9079258/?skipRedirect=true" 
+            target="_blank" 
+            aria-describedby="external-link-warning" 
+            class="external-link">Linked In Profile</a></li>
+        </ul>
+        </nav>
+        <span id="external-link-warning" class="sr-only">(opens in new window)</span>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <section class="contact-form">
+        <h2>Contact Me</h2>
+        <button type="button" class="contact-button" onclick="showContactMeForm()">Get in Touch</button>
+      </section>
+      <nav aria-label="Skip links for efficient navigation">
+        <ul>
+          <li><a href="#main-nav" class="skip-link">Skip to main content</a></li>
+          <li><a href="#external-links-nav" class="skip-link">Skip to external links</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="footer-copyright">&copy; Copyright 2026 rohit.muneshwar1406@gmail.com. All rights reserved.</p>
+    
+    </footer>
   </body>
 </html>
