@@ -1,0 +1,98 @@
+<!-- The first two lines of any HTML file serve as the document's "introduction" to the browser. -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- sets the page title that appears in the browser tab and search results -->
+    <title>Rohit's Blog</title>
+    <!-- set UTF-8 character encoding for proper text display worldwide -->
+    <meta charset="UTF-8" />
+    <!-- ensures compatibility with the modern versions of Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- configures responsive design by setting the viewport to match device width 
+     and controls the initial zoom level to display content at Natural size -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <script src="./script.js" defer></script>
+    <script src="./carbon-footprint.js" defer></script>
+  </head>
+  <body class="wrapper">
+    <!-- Main Site Header -->
+    <header class="site-header">
+      <h1 class="site-header-text">Rohit's Blog</h1>
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li><a href="#post1">Home</a></li>
+          <li><a href="#post2">Posts</a></li>
+          <li><a href="./portfolio.html">Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="site-main">
+      <!-- Blog Posts Goes Here -->
+      <article>
+        <h2>Environmental Awareness</h2>
+        <p>This is a summary of the blog post content.</p>
+        <section>
+          <h3>Carbon Footprint Information</h3>
+          <form class="form-data" autocomplete="on">
+            <div>
+              <h2>New? Add your Information</h2>
+            </div>
+            <div>
+              <label for="region">Region Name</label>
+              <input type="text" id="region" required class="region-name" />
+            </div>
+            <div>
+              <label for="api">Your API Key from tmrow</label>
+              <input type="text" id="api" required class="api-key" />
+            </div>
+            <button class="search-btn">Submit</button>
+          </form>
+
+          <div class="result">
+            <div class="loading">loading...</div>
+            <div class="errors"></div>
+            <div class="data"></div>
+            <div class="result-container">
+              <p><strong>Region: </strong><span class="my-region"></span></p>
+              <p>
+                <strong>Carbon Usage: </strong
+                ><span class="carbon-usage"></span>
+              </p>
+            </div>
+            <button class="clear-btn">Change region</button>
+          </div>
+        </section>
+      </article>
+
+      <!-- Sidebar Content -->
+      <aside class="site-sidebar">
+        <!-- Additional Information -->
+        <section>
+          <h2>About Me</h2>
+          <p>This is a brief description about the blog author.</p>
+        </section>
+        <section>
+          <h2>Recent Posts</h2>
+          <nav>
+            <ul>
+              <li><a href="#post1">Post 1</a></li>
+              <li><a href="#post2">Post 2</a></li>
+            </ul>
+          </nav>
+        </section>
+      </aside>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <section>
+        <h2>Contact Me</h2>
+        <p>Email: rohit.muneshwar1406@gmail.com</p>
+      </section>
+      <p>&copy; 2026 Rohit's Blog. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

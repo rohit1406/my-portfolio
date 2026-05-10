@@ -1,0 +1,52 @@
+.container div{
+    border: 1px solid black;
+}
+
+.container {
+    /* defines a flex container */
+    display: flex;
+    /*
+        flex-flow: a shorthand for the flex-direction and flex-wrap properties.
+        usage -> flex-flow: column wrap;
+    */
+    flex-direction: row;
+    flex-wrap: nowrap; /* all flex items will be on one line */
+    /* defines the alignment along the main axis */
+    justify-content: space-between;
+    /* This defines the default behavior for how flex items are laid out along the cross axis on the current line. 
+    Think of it as the justify-content version for the cross-axis (perpendicular to the main-axis).*/
+    align-items: stretch;
+    min-height: 400px;
+    min-width: 800px;
+    /* align-content:  This property only takes effect on multi-line flexible containers, where flex-wrap is set to either wrap or wrap-reverse). A single-line flexible container (i.e. where flex-wrap is set to its default value, no-wrap) will not reflect align-content.*/
+    align-content: normal; /* default */
+    /* gap, row-gap, column-gap: The gap property explicitly controls the space between flex items.*/
+}
+
+/* properties of the flexbox children 
+order: controls the order in which they appear in the flex container
+flex-grow: If all items have flex-grow set to 1, the remaining space in the container will be distributed 
+equally to all children. If one of the children has a value of 2, that child would take up twice as much of 
+the space as either one of the others (or it will try, at least). 
+flex: flex-grow flex-shrink flex-basis
+align-self: overrides align-items
+*/
+.item2 {
+    order: 1;
+    flex-grow: 1;
+}
+
+.item3 {
+    order: -1;
+    flex-grow: 2;
+}
+
+.item1 {
+    flex-grow: 1;
+    align-self: flex-end;
+}
+
+.item4 {
+    flex-grow: 1;
+    flex-shrink: 4;
+}
