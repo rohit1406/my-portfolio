@@ -24,7 +24,7 @@ function init() {
 
     // Set extension icon to generic green (placeholder for future lesson)
 	// TODO: Implement icon update in next lesson
-
+	console.log('region:', storedRegion);
     if (storedApiKey === null || storedRegion === null) {
         // First-time user: show the setup form
 		form.style.display = 'block';

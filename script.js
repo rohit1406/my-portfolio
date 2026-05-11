@@ -1,12 +1,19 @@
 const routes = {
+  "/index.html": { templateId: "about-me" },
+  "/resume": { templateId: "resume" },
+  "/demos": { templateId: "demos" },
   "/login": { templateId: "login" },
-  "/dashboard": { templateId: "dashboard", init: refresh  },
+  "/dashboard": { templateId: "dashboard", init: refresh },
+
+  // demos
+  "/environmental-awareness": { templateId: "environmental-awareness" },
+  "/webgl-demos": { templateId: "webgl-demos" }
 };
 
 // This holds the current user's account data
 // JavaScript Immutability with freeze
-let state = Object.freeze({account: null});
-const storageKey = 'savedAccount';
+let state = Object.freeze({ account: null });
+const storageKey = "savedAccount";
 
 /**
  * This method first updates the current URL based on the path given, then updates the template.
@@ -21,12 +28,14 @@ function updateRoute() {
   // get only the path section from the URL of the browser window
   const path = window.location.pathname;
   const route = routes[path];
+  console.log("path:", path, "route:", route);
 
   // Before: If a route cannot be found, we'll now redirect to the login page.
   // After persistence impl: Update the default route to take advantage of persistence.
   if (!route) {
     //return navigate("/login");
-    return navigate('/dashboard');
+    //return navigate("/dashboard");
+    return navigate('/index.html')
   }
 
   // 3 steps process
@@ -39,9 +48,9 @@ function updateRoute() {
   app.innerHTML = "";
   app.appendChild(view);
 
-  if (typeof route.init === 'function') {
+  if (typeof route.init === "function") {
     route.init();
-    }
+  }
 }
 
 /**
@@ -50,8 +59,18 @@ function updateRoute() {
  */
 function onLinkClick(event) {
   event.preventDefault();
-  //navigate(event.target.href);
-  logout();
+  navigate(event.target.href);
+  //logout();
+}
+
+function onLoginRegLinkClick(event) {
+  event.preventDefault();
+  navigate(event.target.href);
+  const registerForm = document.getElementById("registerForm");
+  registerForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+    register();
+  });
 }
 
 // Modern event-driven form handling
@@ -73,15 +92,15 @@ async function register() {
     // Send to server
     const result = await createAccount(jsonData);
     if (result.error) {
-      console.error('Registration failed:', result.error);
+      console.error("Registration failed:", result.error);
       //alert(`Registration failed: ${result.error}`);
-      return updateElement('registerError', result.error);
+      return updateElement("registerError", result.error);
     }
-    console.log('Account created successfully!', result);
+    console.log("Account created successfully!", result);
     //alert(`Welcome, ${result.user}! Your account has been created.`);
     // Add these lines at the end of your register function
-    updateState('account', result);
-    navigate('/dashboard');
+    updateState("account", result);
+    navigate("/dashboard");
     // Reset form after successful registration
     registerForm.reset();
   } catch (error) {
@@ -96,11 +115,11 @@ async function register() {
 
 // Attach event listener when the page loads
 document.addEventListener("DOMContentLoaded", () => {
-  const registerForm = document.getElementById("registerForm");
-  registerForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent default form submission
-    register();
-  });
+  // const registerForm = document.getElementById("registerForm");
+  // registerForm.addEventListener("submit", (event) => {
+  //   event.preventDefault(); // Prevent default form submission
+  //   register();
+  // });
 });
 
 async function createAccount(account) {
@@ -127,94 +146,94 @@ async function createAccount(account) {
 }
 
 async function login() {
-  const loginForm = document.getElementById('loginForm');
+  const loginForm = document.getElementById("loginForm");
   const user = loginForm.user.value;
 
   const data = await getAccount(user);
 
   if (data.error) {
-    console.log('loginError', data.error);
-    return updateElement('loginError', data.error);
+    console.log("loginError", data.error);
+    return updateElement("loginError", data.error);
   }
 
-  updateState('account', data);
-  navigate('/dashboard');
+  updateState("account", data);
+  navigate("/dashboard");
 }
 
 async function getAccount(user) {
   try {
     // encodeURIComponent() to safely handle special characters in URLs,
     // it ensures your message arrives exactly as intended, preventing characters like "#" or "&" from being misinterpreted.
-    const response = await fetch('//localhost:5000/api/accounts/' + encodeURIComponent(user));
+    const response = await fetch(
+      "//localhost:5000/api/accounts/" + encodeURIComponent(user),
+    );
     return await response.json();
   } catch (error) {
-    return { error: error.message || 'Unknown error' };
+    return { error: error.message || "Unknown error" };
   }
 }
 
 function updateElement(id, textOrNode) {
   const element = document.getElementById(id);
-  element.textContent = ''; // Removes all children
+  element.textContent = ""; // Removes all children
   element.append(textOrNode);
 }
 
 function updateDashboard() {
-    const account = state.account;
-    if (!account) {
-        return logout();
-    }
+  const account = state.account;
+  if (!account) {
+    return logout();
+  }
 
-    updateElement('description', account.description);
-    updateElement('balance', account.balance.toFixed(2));
-    updateElement('currency', account.currency);
+  updateElement("description", account.description);
+  updateElement("balance", account.balance.toFixed(2));
+  updateElement("currency", account.currency);
 
-    const transactionsRows = document.createDocumentFragment();
-    for (const transaction of account.transactions) {
-        const transactionRow = createTransactionRow(transaction);
-        transactionsRows.appendChild(transactionRow);
-    }
-    updateElement('transactions', transactionsRows);
+  const transactionsRows = document.createDocumentFragment();
+  for (const transaction of account.transactions) {
+    const transactionRow = createTransactionRow(transaction);
+    transactionsRows.appendChild(transactionRow);
+  }
+  updateElement("transactions", transactionsRows);
 }
 
 function createTransactionRow(transaction) {
-    const template = document.getElementById('transaction');
-    const transactionRow = template.content.cloneNode(true);
-    const tr = transactionRow.querySelector('tr');
-    tr.children[0].textContent = transaction.date;
-    tr.children[1].textContent = transaction.object;
-    tr.children[2].textContent = transaction.amount.toFixed(2);
-    return transactionRow;
+  const template = document.getElementById("transaction");
+  const transactionRow = template.content.cloneNode(true);
+  const tr = transactionRow.querySelector("tr");
+  tr.children[0].textContent = transaction.date;
+  tr.children[1].textContent = transaction.object;
+  tr.children[2].textContent = transaction.amount.toFixed(2);
+  return transactionRow;
 }
 
 function updateState(property, newData) {
-    state = Object.freeze(
-        {
-            ...state,
-            [property]: newData
-        }
-    );
-    console.log(state);
-    localStorage.setItem(storageKey, JSON.stringify(state.account));
+  state = Object.freeze({
+    ...state,
+    [property]: newData,
+  });
+  console.log(state);
+  localStorage.setItem(storageKey, JSON.stringify(state.account));
 }
 
 function logout() {
-    updateState('account', null);
-    navigate('/login');
+  updateState("account", null);
+  navigate("/login");
 }
 
 function init() {
-    const savedAccount = localStorage.getItem(storageKey);
-    if (savedAccount) {
-        updateState('account', JSON.parse(savedAccount));
-    }
+  const savedAccount = localStorage.getItem(storageKey);
+  if (savedAccount) {
+    updateState("account", JSON.parse(savedAccount));
+  }
 
-    // Our previous initialization code
-    /**
-     * Making the Back and Forward Buttons Work:
-     * if the state changes (browser url changes by pressing back and forward button) - meaning that we moved to a different URL - the popstate event is triggered
-     */
-    window.onpopstate = () => updateRoute();
-    updateRoute();
+  // Our previous initialization code
+  /**
+   * Making the Back and Forward Buttons Work:
+   * if the state changes (browser url changes by pressing back and forward button) - meaning that we moved to a different URL - the popstate event is triggered
+   */
+  window.onpopstate = () => updateRoute();
+  updateRoute();
 }
 
 init();
@@ -223,17 +242,17 @@ init();
  * Implement Data Refresh System to handle Data Freshness Problem
  */
 async function updateAccountData() {
-    const account = state.account;
-    if (!account) {
-        return logout();
-    }
+  const account = state.account;
+  if (!account) {
+    return logout();
+  }
 
-    const data = await getAccount(account.user);
-    if (data.error) {
-        return logout();
-    }
+  const data = await getAccount(account.user);
+  if (data.error) {
+    return logout();
+  }
 
-    updateState('account', data);
+  updateState("account", data);
 }
 
 async function refresh() {
