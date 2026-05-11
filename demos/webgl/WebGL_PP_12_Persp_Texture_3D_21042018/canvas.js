@@ -4,6 +4,7 @@ var gl=null; //webgl context
 var gbFullscreen=false;
 var canvas_original_width;
 var canvas_original_height;
+var imagePath = "/images/";
 
 const WebGLMacros= //when whole 'WebGLMacros' is 'const', all inside it are automatically 'const'
 {
@@ -201,7 +202,7 @@ function init()
 	//load pyramid texture
 	gPyramid_texture = gl.createTexture();
 	gPyramid_texture.image = new Image();
-	gPyramid_texture.image.src = "stone.png";
+	gPyramid_texture.image.src = imagePath+"stone.png";
 	gPyramid_texture.image.onload = function()
 	{
 		gl.bindTexture(gl.TEXTURE_2D, gPyramid_texture);
@@ -215,7 +216,7 @@ function init()
 	//load cube texture
 	gCube_texture = gl.createTexture();
 	gCube_texture.image = new Image();
-	gCube_texture.image.src = "Vijay_Kundali.png";
+	gCube_texture.image.src = imagePath+"Vijay_Kundali.png";
 	gCube_texture.image.onload = function()
 	{
 		gl.bindTexture(gl.TEXTURE_2D, gCube_texture);

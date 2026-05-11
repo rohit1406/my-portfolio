@@ -4,6 +4,7 @@ var gl=null; //webgl context
 var gbFullscreen=false;
 var canvas_original_width;
 var canvas_original_height;
+var imagePath = "/images/";
 
 const WebGLMacros= //when whole 'WebGLMacros' is 'const', all inside it are automatically 'const'
 {
@@ -176,7 +177,7 @@ function init()
 	//load smiley texture
 	gSmiley_texture = gl.createTexture();
 	gSmiley_texture.image = new Image();
-	gSmiley_texture.image.src = "smiley.png";
+	gSmiley_texture.image.src = imagePath+"smiley.png";
 	gSmiley_texture.image.onload = function()
 	{
 		gl.bindTexture(gl.TEXTURE_2D, gSmiley_texture);

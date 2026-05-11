@@ -24,8 +24,9 @@
       <nav class="main-nav">
         <ul class="main-nav-list">
           <li><a href="/index.html" onclick="onLinkClick(event)">Home</a></li>
-          <li><a href="/demos" onclick="onLinkClick(event)">Demos</a></li>
           <li><a href="/resume" onclick="onLinkClick(event)">Resume</a></li>
+          <li><a href="/demos" onclick="onLinkClick(event)">Demos</a></li>
+          <li><a href="/login" onclick="onLoginRegLinkClick(event)">Contact Me</a></li>
           <li><a href="/login" onclick="onLoginRegLinkClick(event)">Register</a></li>
         </ul>
       </nav>
@@ -702,15 +703,40 @@
   </template>
 
   <template id="webgl-demos">
-<h2>WebGL Demos</h2>
+    <div class="demo-container">
+      <div class="demo-container-header">
+      <h2>WebGL Demos</h2>
       <p>Hardware accelerated 3D rendering using WebGL</p>
+      </div>
+      <div class="demo-container-body">
       <nav class="demo-nav">
-        <li><a href="./demos/webgl/WebGL_01_Canvas_25032018/canvas.html" onclick="onDemoLinkClick(event)">Hello Canvas</a></li>
-        <li><a href="./demos/webgl/WebGL_02_Events_25032018/canvas.html" onclick="onDemoLinkClick(event)">Canvas Events</a></li>
+        <li><a href="./demos/webgl/WebGL_01_Canvas_25032018/canvas.html" onclick="onDemoLinkClick(event)">1. Hello Canvas</a></li>
+        <li><a href="./demos/webgl/WebGL_02_Events_25032018/canvas.html" onclick="onDemoLinkClick(event)">2. Canvas Events</a></li>
+        <li><a href="./demos/webgl/WebGL_03_FullScreen_25032018/canvas.html" onclick="onDemoLinkClick(event)">3. Full Screen Canvas</a></li>
+        <li><a href="./demos/webgl/WebGL_04_BlueScreen_07042018/canvas.html" onclick="onDemoLinkClick(event)">4. Blue Canvas</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_05_Ortho_08042018/canvas.html" onclick="onDemoLinkClick(event)">5. Orthographic Projection Canvas</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_06_Persp_15042018/canvas.html" onclick="onDemoLinkClick(event)">6. Perspective Projection Canvas</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_07_Persp_Colored_Tri_15042018/canvas.html" onclick="onDemoLinkClick(event)">7. Perspective Colored Triangle</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_08_Persp_2D_Geometry_15042018/canvas.html" onclick="onDemoLinkClick(event)">8. 2D Geometry</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_09_Persp_Colored_2D_Geometry_15042018/canvas.html" onclick="onDemoLinkClick(event)">9. Colored 2D Geometry</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_10_Persp_Anim_Colored_2D_Geometry_15042018/canvas.html" onclick="onDemoLinkClick(event)">10. Animated Colored 2D Geometry</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_11_Persp_Anim_Colored_3D_Geometry_15042018/canvas.html" onclick="onDemoLinkClick(event)">11. Animated Colored 3D Geometry</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_12_Persp_Texture_3D_21042018/canvas.html" onclick="onDemoLinkClick(event)">12. Textured 3D Geometry</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_13_Persp_Texture_2D_Smiely_21042018/canvas.html" onclick="onDemoLinkClick(event)">13. Textured 2D Smiley</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_14_Persp_Texture_2D_Tweak_Smiely_21042018/canvas.html" onclick="onDemoLinkClick(event)">14. Textured 2D Tweak Smiley</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_15_Persp_Texture_Checker_Board_21042018/canvas.html" onclick="onDemoLinkClick(event)">15. Procedural Textured Checker Board</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_16_Persp_Light_Single_Diffued_Light_Cube_21042018/canvas.html" onclick="onDemoLinkClick(event)">16. Single Diffused Light Cube</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_17_Persp_Light_Sphere_Per_Vertex_21042018/canvas.html" onclick="onDemoLinkClick(event)">17. Per Vertex Lighting on Sphere</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_18_Persp_Light_Sphere_Per_Fragment_21042018/canvas.html" onclick="onDemoLinkClick(event)">18. Per Fragment Lighting on Sphere</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_19_Persp_Light_Sphere_Per_VertexAndFragment_21042018/canvas.html" onclick="onDemoLinkClick(event)">19. Per Vertex/ Per Fragment Lighting on Sphere</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_20_Persp_3Lights_Sphere_Per_VertexAndFragment_21042018/canvas.html" onclick="onDemoLinkClick(event)">20. 3 Lights on Sphere</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_21_Persp_Light_2RotLights_Pyramid_Per_Vertex_21042018/canvas.html" onclick="onDemoLinkClick(event)">21. 2 Rotating Lights on 3D Shapes</a></li>
+        <li><a href="./demos/webgl/WebGL_PP_22_Persp_Light_Materials_Per_Fragment_21042018/canvas.html" onclick="onDemoLinkClick(event)">22. Materials Per Fragment</a></li>
       </nav>
       <div id="demo-content">
-        <!-- Demo content will be loaded here -->
-         <include>Empty</include>
+        <!-- Demo content will be loaded here from onDemoLinkClick() function -->
+      </div>
+      </div>
       </div>
   </template>
 

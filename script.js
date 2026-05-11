@@ -68,12 +68,8 @@ function onLinkClick(event) {
 function onDemoLinkClick(event) {
   event.preventDefault();
   const path = event.target.href;
-  // update the URL in the browser window and create a new entry in the browsing history, without reloading the HTML
-  window.history.pushState({}, path, path);
   const demoContent = document.getElementById("demo-content");
-  demoContent.innerHTML = `<iframe src="${path}" frameborder="0" style="width: 100%; height: 500px;"></iframe>`;
-  //logout();
-  console.log('loading>>', path)
+  demoContent.innerHTML = `<iframe class="demo-content" src="${path}" frameborder="0"></iframe>`;
 }
 
 function onLoginRegLinkClick(event) {

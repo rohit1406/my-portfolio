@@ -185,6 +185,31 @@
   border: 1px solid black;
 }
 
+/* demos */
+.demo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-container-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.demo-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 300px;
+}
+
+.demo-content {
+  min-width: 800px;
+  min-height: 600px;
+  flex: 2;
+}
+
 /* Valid input styling */
 input:valid {
   border-color: #28a745;
