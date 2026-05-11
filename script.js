@@ -7,7 +7,9 @@ const routes = {
 
   // demos
   "/environmental-awareness": { templateId: "environmental-awareness" },
-  "/webgl-demos": { templateId: "webgl-demos" }
+  "/webgl-demos": { templateId: "webgl-demos" },
+
+  "/demos/webgl/WebGL_01_Canvas_25032018/canvas.html": { templateId: 'webgl-canvas' },
 };
 
 // This holds the current user's account data
@@ -61,6 +63,17 @@ function onLinkClick(event) {
   event.preventDefault();
   navigate(event.target.href);
   //logout();
+}
+
+function onDemoLinkClick(event) {
+  event.preventDefault();
+  const path = event.target.href;
+  // update the URL in the browser window and create a new entry in the browsing history, without reloading the HTML
+  window.history.pushState({}, path, path);
+  const demoContent = document.getElementById("demo-content");
+  demoContent.innerHTML = `<iframe src="${path}" frameborder="0" style="width: 100%; height: 500px;"></iframe>`;
+  //logout();
+  console.log('loading>>', path)
 }
 
 function onLoginRegLinkClick(event) {
