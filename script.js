@@ -23,7 +23,22 @@ const storageKey = "savedAccount";
 function navigate(path) {
   // update the URL in the browser window and create a new entry in the browsing history, without reloading the HTML
   window.history.pushState({}, path, path);
+  controlElementDisplay('site-main-sidebar-id');
   updateRoute();
+}
+
+function controlElementDisplay(name) {
+const mainSidebar = document.getElementById(name);
+// hide sidebar
+  mainSidebar.style.display = "none";
+  let path = window.location.pathname;
+  if(path!=='/demos' && path.includes('demo')) {
+    mainSidebar.style.display = "none";
+  } else {
+    if(mainSidebar) {
+      mainSidebar.style.display = "flex";
+    }
+  }
 }
 
 function updateRoute() {
@@ -68,6 +83,8 @@ function onLinkClick(event) {
 function onDemoLinkClick(event) {
   event.preventDefault();
   const path = event.target.href;
+  console.log("Demo link clicked:", path);
+  controlElementDisplay('site-main-sidebar-id');
   const demoContent = document.getElementById("demo-content");
   demoContent.innerHTML = `<iframe class="demo-content" src="${path}" frameborder="0"></iframe>`;
 }
